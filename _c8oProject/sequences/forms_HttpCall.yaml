@@ -30,7 +30,7 @@ comment: |
         - java.lang.String: 
           - ↑value: 1779859940519
         - java.lang.String: 
-          - ↑value: ./forms_Url/text()
+          - ↑value: ./forms_http_url/text()
   sourceTransaction: lib_HttpAction.HTTP_connector.HttpCall
   ↓__body [variables.StepVariable-1779858476462]: 
     sourceDefinition: 
@@ -40,8 +40,8 @@ comment: |
           - java.lang.String: 
             - ↑value: 1779859940519
           - java.lang.String: 
-            - ↑value: ./forms_Body/text()
-  ↓forms_Headers [variables.StepVariable-1779865634777]: 
+            - ↑value: ./forms_http_body/text()
+  ↓forms_http_headers [variables.StepVariable-1779865634777]: 
     sourceDefinition: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
@@ -49,8 +49,8 @@ comment: |
           - java.lang.String: 
             - ↑value: 1779859940519
           - java.lang.String: 
-            - ↑value: ./forms_Headers/text()
-  ↓forms_Verb [variables.StepVariable-1779865634841]: 
+            - ↑value: ./forms_http_headers/text()
+  ↓forms_http_verb [variables.StepVariable-1779865634841]: 
     sourceDefinition: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
@@ -58,7 +58,7 @@ comment: |
           - java.lang.String: 
             - ↑value: 1779859940519
           - java.lang.String: 
-            - ↑value: ./forms_Verb/text()
+            - ↑value: ./forms_http_verb/text()
 ↓Copy [steps.XMLCopyStep-1779866878473]: 
   sourceDefinition: 
     - xmlizable: 
@@ -68,41 +68,85 @@ comment: |
           - ↑value: 1779858476460
         - java.lang.String: 
           - ↑value: ./document/*
-↓forms_Verb [variables.RequestableVariable-1779857624782]: 
+↓forms_http_verb [variables.RequestableVariable-1779857624782]: 
   comment: |
     '{
-      "en": "HTTP verb to use (GET, POST, PUT, DELETE, PATCH, etc.). This determines the type of HTTP request to make.",
-      "fr": "Verbe HTTP à utiliser (GET, POST, PUT, DELETE, PATCH, etc.). Cela détermine le type de requête HTTP à effectuer.",
-      "it": "Verbo HTTP da utilizzare (GET, POST, PUT, DELETE, PATCH, ecc.). Questo determina il tipo di richiesta HTTP da effettuare.",
-      "es": "Verbo HTTP a usar (GET, POST, PUT, DELETE, PATCH, etc.). Esto determina el tipo de solicitud HTTP a realizar.",
-      "ch": "要使用的HTTP动词（GET、POST、PUT、DELETE、PATCH等）。这决定了要制作的HTTP请求类型。"
+        "en": {
+            "displayName": "<p>HTTP method</p>",
+            "comment": "<div>HTTP method to use for the request. Examples: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code> or <code>DELETE</code>.</div>"
+        },
+        "fr": {
+            "displayName": "<p>Méthode HTTP</p>",
+            "comment": "<div>Méthode HTTP à utiliser pour la requête. Exemples : <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code> ou <code>DELETE</code>.</div>"
+        },
+        "es": {
+            "displayName": "<p>Método HTTP</p>",
+            "comment": "<div>Método HTTP que se usará para la solicitud. Ejemplos: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code> o <code>DELETE</code>.</div>"
+        },
+        "it": {
+            "displayName": "<p>Metodo HTTP</p>",
+            "comment": "<div>Metodo HTTP da usare per la richiesta. Esempi: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code> o <code>DELETE</code>.</div>"
+        }
     }'
-↓forms_Body [variables.RequestableVariable-1779857624785]: 
+↓forms_http_body [variables.RequestableVariable-1779857624785]: 
   comment: |
     '{
-      "en": "JSON body to send with the request (for POST, PUT, PATCH verbs). This should be a valid JSON string that will be sent as the request payload.",
-      "fr": "Corps JSON à envoyer avec la requête (pour les verbes POST, PUT, PATCH). Cela doit être une chaîne JSON valide qui sera envoyée comme charge utile de la requête.",
-      "it": "Corpo JSON da inviare con la richiesta (per i verbi POST, PUT, PATCH). Deve essere una stringa JSON valida che verrà inviate come payload della richiesta.",
-      "es": "Cuerpo JSON para enviar con la solicitud (para los verbos POST, PUT, PATCH). Esto debe ser una cadena JSON válida que se enviará como carga útil de la solicitud.",
-      "ch": "要随请求发送的JSON正文（用于POST、PUT、PATCH动词）。这应该是一个有效的JSON字符串，将作为请求负载发送。"
+        "en": {
+            "displayName": "<p>JSON body</p>",
+            "comment": "<div>JSON body to send with the request. Example: <code>{\"name\":\"Alice\",\"active\":true,\"tags\":[\"lead\",\"demo\"]}</code>. <i>(optional)</i></div>"
+        },
+        "fr": {
+            "displayName": "<p>Corps JSON</p>",
+            "comment": "<div>Corps JSON à envoyer avec la requête. Exemple : <code>{\"name\":\"Alice\",\"active\":true,\"tags\":[\"lead\",\"demo\"]}</code>. <i>(optionnel)</i></div>"
+        },
+        "es": {
+            "displayName": "<p>Cuerpo JSON</p>",
+            "comment": "<div>Cuerpo JSON que se enviará con la solicitud. Ejemplo: <code>{\"name\":\"Alice\",\"active\":true,\"tags\":[\"lead\",\"demo\"]}</code>. <i>(opcional)</i></div>"
+        },
+        "it": {
+            "displayName": "<p>Corpo JSON</p>",
+            "comment": "<div>Corpo JSON da inviare con la richiesta. Esempio: <code>{\"name\":\"Alice\",\"active\":true,\"tags\":[\"lead\",\"demo\"]}</code>. <i>(facoltativo)</i></div>"
+        }
     }'
-↓forms_Headers [variables.RequestableVariable-1779857624787]: 
+↓forms_http_headers [variables.RequestableVariable-1779857624787]: 
   comment: |
     '{
-      "en": "JSON array of object headers to include in the request. Format: [{name: Header-Name, value: Header-Value}]. Each object in the array represents a single HTTP header with ''name'' and ''value'' properties.",
-      "fr": "Tableau JSON d''objets d''en-têtes à inclure dans la requête. Format : [{name: Nom-EnTete, value: Valeur-EnTete}]. Chaque objet du tableau représente un en-tête HTTP unique avec les propriétés ''name'' et ''value''.",
-      "it": "Array JSON di oggetti header da includere nella richiesta. Formato: [{name: Nome-Header, value: Valore-Header}]. Ogni oggetto nell''array rappresenta un singolo header HTTP con le proprietà ''name'' e ''value''.",
-      "es": "Matriz JSON de objetos de encabezados para incluir en la solicitud. Formato: [{name: Nombre-Encabezado, value: Valor-Encabezado}]. Cada objeto en la matriz representa un encabezado HTTP único con las propiedades ''name'' y ''value''.",
-      "ch": "要包含在请求中的JSON头对象数组。格式：[{"name": "头名称", "value": "头值"}]。数组中的每个对象代表一个带有''name''和''value''属性的HTTP头。"
+        "en": {
+            "displayName": "<p>HTTP headers</p>",
+            "comment": "<div>JSON array of HTTP headers. Example: <code>[{\"name\":\"Accept\",\"value\":\"application/json\"},{\"name\":\"Authorization\",\"value\":\"Bearer YOUR_TOKEN\"}]</code>. <i>(optional)</i></div>"
+        },
+        "fr": {
+            "displayName": "<p>En-têtes HTTP</p>",
+            "comment": "<div>Tableau JSON d''en-têtes HTTP. Exemple : <code>[{\"name\":\"Accept\",\"value\":\"application/json\"},{\"name\":\"Authorization\",\"value\":\"Bearer YOUR_TOKEN\"}]</code>. <i>(optionnel)</i></div>"
+        },
+        "es": {
+            "displayName": "<p>Encabezados HTTP</p>",
+            "comment": "<div>Array JSON de encabezados HTTP. Ejemplo: <code>[{\"name\":\"Accept\",\"value\":\"application/json\"},{\"name\":\"Authorization\",\"value\":\"Bearer YOUR_TOKEN\"}]</code>. <i>(opcional)</i></div>"
+        },
+        "it": {
+            "displayName": "<p>Header HTTP</p>",
+            "comment": "<div>Array JSON di header HTTP. Esempio: <code>[{\"name\":\"Accept\",\"value\":\"application/json\"},{\"name\":\"Authorization\",\"value\":\"Bearer YOUR_TOKEN\"}]</code>. <i>(facoltativo)</i></div>"
+        }
     }'
-↓forms_Url [variables.RequestableVariable-1779858754284]: 
+↓forms_http_url [variables.RequestableVariable-1779858754284]: 
   comment: |
     '{
-      "en": "URL to call (including optional query string). This is the target endpoint for the HTTP request.",
-      "fr": "URL à appeler (incluant la chaîne de requête éventuelle). Il s''agit du point de terminaison cible pour la requête HTTP.",
-      "it": "URL da chiamare (inclusa l''eventuale stringa di query). Questo è l''endpoint di destinazione per la richiesta HTTP.",
-      "es": "URL a llamar (incluyendo la cadena de consulta opcional). Este es el endpoint de destino para la solicitud HTTP.",
-      "ch": "要调用的URL（包括可选的查询字符串）。这是HTTP请求的目标端点。"
+        "en": {
+            "displayName": "<p>URL</p>",
+            "comment": "<div>Target URL to call, including the optional query string. Examples: <code>https://api.example.com/customers?status=active&amp;limit=10</code>, <code>https://postman-echo.com/get?search=convertigo&amp;page=1</code>. <i>(mandatory)</i></div>"
+        },
+        "fr": {
+            "displayName": "<p>URL</p>",
+            "comment": "<div>URL cible à appeler, avec la chaîne de requête éventuelle. Exemples : <code>https://api.example.com/customers?status=active&amp;limit=10</code>, <code>https://postman-echo.com/get?search=convertigo&amp;page=1</code>. <i>(obligatoire)</i></div>"
+        },
+        "es": {
+            "displayName": "<p>URL</p>",
+            "comment": "<div>URL de destino que se llamará, incluida la cadena de consulta opcional. Ejemplos: <code>https://api.example.com/customers?status=active&amp;limit=10</code>, <code>https://postman-echo.com/get?search=convertigo&amp;page=1</code>. <i>(obligatorio)</i></div>"
+        },
+        "it": {
+            "displayName": "<p>URL</p>",
+            "comment": "<div>URL di destinazione da chiamare, inclusa l''eventuale stringa di query. Esempi: <code>https://api.example.com/customers?status=active&amp;limit=10</code>, <code>https://postman-echo.com/get?search=convertigo&amp;page=1</code>. <i>(obbligatorio)</i></div>"
+        }
     }'
 ↓Test_HTTPBin_DELETE [core.TestCase]: 
   comment: |
@@ -113,7 +157,7 @@ comment: |
       "es": "Caso de prueba para solicitud DELETE. Llama al endpoint DELETE de HTTPBin para verificar que las operaciones de eliminación funcionen correctamente.",
       "ch": "DELETE请求的测试用例。调用HTTPBin的DELETE端点以验证删除操作是否正常工作。"
     }'
-  ↓forms_Url [variables.TestCaseVariable-1779860193579]: 
+  ↓forms_http_url [variables.TestCaseVariable-1779860193579]: 
     comment: |
       '{
         "en": "HTTPBin DELETE endpoint URL with resource ID for testing.",
@@ -123,7 +167,7 @@ comment: |
         "ch": "HTTPBin DELETE端点URL，带有资源ID，用于测试。"
       }'
     value: https://httpbin.org/delete
-  ↓forms_Verb [variables.TestCaseVariable-1779860197463]: 
+  ↓forms_http_verb [variables.TestCaseVariable-1779860197463]: 
     comment: |
       '{
         "en": "DELETE method for the test.",
@@ -133,7 +177,7 @@ comment: |
         "ch": "测试的DELETE方法。"
       }'
     value: DELETE
-  ↓forms_Body [variables.TestCaseVariable-1779860202562]: 
+  ↓forms_http_body [variables.TestCaseVariable-1779860202562]: 
     comment: |
       '{
         "en": "Empty body for DELETE request.",
@@ -143,7 +187,7 @@ comment: |
         "ch": "DELETE请求的空正文。"
       }'
     value: '{}'
-  ↓forms_Headers [variables.TestCaseVariable-1779860206572]: 
+  ↓forms_http_headers [variables.TestCaseVariable-1779860206572]: 
     comment: |
       '{
         "en": "Test headers for HTTPBin DELETE request.",
@@ -162,7 +206,7 @@ comment: |
       "es": "Caso de prueba para la secuencia forms_HttpCall. Llama al endpoint GET de HTTPBin para verificar que la secuencia funciona correctamente.",
       "ch": "forms_HttpCall序列的测试用例。调用HTTPBin的GET端点以验证序列是否正常工作。"
     }'
-  ↓forms_Url [variables.TestCaseVariable-1779859236428]: 
+  ↓forms_http_url [variables.TestCaseVariable-1779859236428]: 
     comment: |
       '{
         "en": "HTTPBin GET endpoint URL for testing.",
@@ -172,7 +216,7 @@ comment: |
         "ch": "HTTPBin GET端点URL，用于测试。"
       }'
     value: https://httpbin.org/get
-  ↓forms_Verb [variables.TestCaseVariable-1779859261383]: 
+  ↓forms_http_verb [variables.TestCaseVariable-1779859261383]: 
     comment: |
       '{
         "en": "HTTP method for the test.",
@@ -182,7 +226,7 @@ comment: |
         "ch": "测试的HTTP方法。"
       }'
     value: GET
-  ↓forms_Body [variables.TestCaseVariable-1779859268499]: 
+  ↓forms_http_body [variables.TestCaseVariable-1779859268499]: 
     comment: |
       '{
         "en": "Empty body for GET request.",
@@ -192,7 +236,7 @@ comment: |
         "ch": "GET请求的空正文。"
       }'
     value: '{}'
-  ↓forms_Headers [variables.TestCaseVariable-1779859276348]: 
+  ↓forms_http_headers [variables.TestCaseVariable-1779859276348]: 
     comment: |
       '{
         "en": "Test headers for HTTPBin request.",
@@ -211,7 +255,7 @@ comment: |
       "es": "Caso de prueba para solicitud GET con parámetros de consulta. Llama al endpoint GET de HTTPBin con cadena de consulta para verificar que los parámetros de URL se manejen correctamente.",
       "ch": "包含查询参数的GET请求测试用例。调用HTTPBin的GET端点，带有查询字符串，以验证URL参数是否正确处理。"
     }'
-  ↓forms_Url [variables.TestCaseVariable-1779860216266]: 
+  ↓forms_http_url [variables.TestCaseVariable-1779860216266]: 
     comment: |
       '{
         "en": "HTTPBin GET endpoint URL with query parameters for testing.",
@@ -221,7 +265,7 @@ comment: |
         "ch": "HTTPBin GET端点URL，带有查询参数，用于测试。"
       }'
     value: https://httpbin.org/get?param1=value1&param2=value2
-  ↓forms_Verb [variables.TestCaseVariable-1779860220576]: 
+  ↓forms_http_verb [variables.TestCaseVariable-1779860220576]: 
     comment: |
       '{
         "en": "GET method for the test.",
@@ -231,7 +275,7 @@ comment: |
         "ch": "测试的GET方法。"
       }'
     value: GET
-  ↓forms_Body [variables.TestCaseVariable-1779860223875]: 
+  ↓forms_http_body [variables.TestCaseVariable-1779860223875]: 
     comment: |
       '{
         "en": "Empty body for GET request with query parameters.",
@@ -241,7 +285,7 @@ comment: |
         "ch": "带有查询参数的GET请求的空正文。"
       }'
     value: '{}'
-  ↓forms_Headers [variables.TestCaseVariable-1779860228556]: 
+  ↓forms_http_headers [variables.TestCaseVariable-1779860228556]: 
     comment: |
       '{
         "en": "Test headers for HTTPBin GET request with query parameters.",
@@ -260,7 +304,7 @@ comment: |
       "es": "Caso de prueba para solicitud POST con cuerpo JSON. Llama al endpoint POST de HTTPBin para verificar que el cuerpo JSON se envía correctamente.",
       "ch": "POST请求的测试用例，包含JSON正文。调用HTTPBin的POST端点以验证JSON正文是否正确发送。"
     }'
-  ↓forms_Url [variables.TestCaseVariable-1779860122394]: 
+  ↓forms_http_url [variables.TestCaseVariable-1779860122394]: 
     comment: |
       '{
         "en": "HTTPBin POST endpoint URL for testing.",
@@ -270,7 +314,7 @@ comment: |
         "ch": "HTTPBin POST端点URL，用于测试。"
       }'
     value: https://httpbin.org/post
-  ↓forms_Verb [variables.TestCaseVariable-1779860126232]: 
+  ↓forms_http_verb [variables.TestCaseVariable-1779860126232]: 
     comment: |
       '{
         "en": "POST method for the test.",
@@ -280,7 +324,7 @@ comment: |
         "ch": "测试的POST方法。"
       }'
     value: POST
-  ↓forms_Body [variables.TestCaseVariable-1779860130170]: 
+  ↓forms_http_body [variables.TestCaseVariable-1779860130170]: 
     comment: |
       '{
         "en": "JSON body for POST request.",
@@ -290,7 +334,7 @@ comment: |
         "ch": "POST请求的JSON正文。"
       }'
     value: '{"name":"Convertigo HTTP action test","message":"POST body sent by Test_HTTPBin_POST","active":true}'
-  ↓forms_Headers [variables.TestCaseVariable-1779860135907]: 
+  ↓forms_http_headers [variables.TestCaseVariable-1779860135907]: 
     comment: |
       '{
         "en": "Test headers for HTTPBin POST request.",
@@ -309,7 +353,7 @@ comment: |
       "es": "Caso de prueba para solicitud PUT con cuerpo JSON. Llama al endpoint PUT de HTTPBin para verificar que las operaciones de actualización funcionen correctamente.",
       "ch": "PUT请求的测试用例，包含JSON正文。调用HTTPBin的PUT端点以验证更新操作是否正常工作。"
     }'
-  ↓forms_Url [variables.TestCaseVariable-1779860144537]: 
+  ↓forms_http_url [variables.TestCaseVariable-1779860144537]: 
     comment: |
       '{
         "en": "HTTPBin PUT endpoint URL for testing.",
@@ -319,7 +363,7 @@ comment: |
         "ch": "HTTPBin PUT端点URL，用于测试。"
       }'
     value: https://httpbin.org/put
-  ↓forms_Verb [variables.TestCaseVariable-1779860148506]: 
+  ↓forms_http_verb [variables.TestCaseVariable-1779860148506]: 
     comment: |
       '{
         "en": "PUT method for the test.",
@@ -329,7 +373,7 @@ comment: |
         "ch": "测试的PUT方法。"
       }'
     value: PUT
-  ↓forms_Body [variables.TestCaseVariable-1779860153003]: 
+  ↓forms_http_body [variables.TestCaseVariable-1779860153003]: 
     comment: |
       '{
         "en": "JSON body for PUT request to update a resource.",
@@ -339,7 +383,7 @@ comment: |
         "ch": "PUT请求的JSON正文，用于更新资源。"
       }'
     value: '{"id":42,"name":"Updated Convertigo HTTP action test","message":"PUT body sent by Test_HTTPBin_PUT","active":true}'
-  ↓forms_Headers [variables.TestCaseVariable-1779860184522]: 
+  ↓forms_http_headers [variables.TestCaseVariable-1779860184522]: 
     comment: |
       '{
         "en": "Test headers for HTTPBin PUT request.",

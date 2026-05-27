@@ -29,7 +29,7 @@
                   variables.put(name, String(value));
               }
           }
-          var verb = getText("forms_Verb").toUpperCase();
+          var verb = getText("forms_http_verb").toUpperCase();
           if (verb.length == 0) {
               verb = "GET";
           }
@@ -44,11 +44,11 @@
           var contentType = "";
           var XMLVector = Packages.com.twinsoft.convertigo.beans.common.XMLVector;
           var httpParameters = new XMLVector();
-          var headersText = getText("forms_Headers");
+          var headersText = getText("forms_http_headers");
           if (headersText.length > 0) {
               var headers = JSON.parse(headersText);
               if (!Array.isArray(headers)) {
-                  throw "forms_Headers must be a JSON array";
+                  throw "forms_http_headers must be a JSON array";
               }
               for (var i = 0; i < headers.length; i++) {
                   var header = headers[i] || {};
@@ -76,31 +76,31 @@
           } else if (verb == "GET" || verb == "DELETE") {
               variables.remove("__body");
           }
-          variables.remove("forms_Verb");
-          variables.remove("forms_Headers");
+          variables.remove("forms_http_verb");
+          variables.remove("forms_http_headers");
           context.connector.prepareForTransaction(context);
       }
       '
   ↓__body [variables.RequestableHttpVariable-1779858456964]: 
     comment: |
       '{
-        "en": "Request body content from sequence variable forms_Body.",
-        "fr": "Contenu du corps de la requête depuis la variable de séquence forms_Body.",
-        "it": "Contenuto del body della richiesta dalla variabile di sequenza forms_Body.",
-        "es": "Contenido del cuerpo de la solicitud desde la variable de secuencia forms_Body.",
-        "ch": "来自序列变量forms_Body的请求正文内容。"
+        "en": "Request body content from sequence variable forms_http_body.",
+        "fr": "Contenu du corps de la requête depuis la variable de séquence forms_http_body.",
+        "it": "Contenuto del body della richiesta dalla variabile di sequenza forms_http_body.",
+        "es": "Contenido del cuerpo de la solicitud desde la variable de secuencia forms_http_body.",
+        "ch": "来自序列变量forms_http_body的请求正文内容。"
       }'
     httpMethod: POST
-  ↓forms_Headers [variables.RequestableHttpVariable-1779858840104]: 
+  ↓forms_http_headers [variables.RequestableHttpVariable-1779858840104]: 
     comment: |
       '{
-        "en": "HTTP headers from sequence variable forms_Headers.",
-        "fr": "En-têtes HTTP depuis la variable de séquence forms_Headers.",
-        "it": "Header HTTP dalla variabile di sequenza forms_Headers.",
-        "es": "Encabezados HTTP desde la variable de secuencia forms_Headers.",
-        "ch": "来自序列变量forms_Headers的HTTP标头。"
+        "en": "HTTP headers from sequence variable forms_http_headers.",
+        "fr": "En-têtes HTTP depuis la variable de séquence forms_http_headers.",
+        "it": "Header HTTP dalla variabile di sequenza forms_http_headers.",
+        "es": "Encabezados HTTP desde la variable de secuencia forms_http_headers.",
+        "ch": "来自序列变量forms_http_headers的HTTP标头。"
       }'
-  ↓forms_Verb [variables.RequestableHttpVariable-1779865634487]: 
-    comment: HTTP verb supplied by forms_Verb.
+  ↓forms_http_verb [variables.RequestableHttpVariable-1779865634487]: 
+    comment: HTTP verb supplied by forms_http_verb.
   ↓__contentType [variables.RequestableHttpVariable-1779865634543]: 
     comment: Resolved request body content type.
