@@ -18,6 +18,41 @@ comment: |
           - ↑value: ./forms_Url/text()
   sourceTransaction: lib_HttpAction.HTTP_connector.HttpCall
   ↓__body [variables.StepVariable-1779858476462]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1779859940519
+          - java.lang.String: 
+            - ↑value: ./forms_Body/text()
+  ↓forms_Headers [variables.StepVariable-1779865634777]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1779859940519
+          - java.lang.String: 
+            - ↑value: ./forms_Headers/text()
+  ↓forms_Verb [variables.StepVariable-1779865634841]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1779859940519
+          - java.lang.String: 
+            - ↑value: ./forms_Verb/text()
+↓Copy [steps.XMLCopyStep-1779866878473]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1779858476460
+        - java.lang.String: 
+          - ↑value: ./document/*
 ↓forms_Verb [variables.RequestableVariable-1779857624782]: 
   comment: |
     '{
@@ -72,7 +107,7 @@ comment: |
         "es": "URL del endpoint DELETE de HTTPBin con ID de recurso para pruebas.",
         "ch": "HTTPBin DELETE端点URL，带有资源ID，用于测试。"
       }'
-    value: https://httpbin.org/delete/42
+    value: https://httpbin.org/delete
   ↓forms_Verb [variables.TestCaseVariable-1779860197463]: 
     comment: |
       '{

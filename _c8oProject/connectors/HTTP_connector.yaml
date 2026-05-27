@@ -10,11 +10,76 @@
       "ch": "通用JSON API的HTTP调用事务。使用来自序列变量的动态URL、动词、正文和标头。"
     }'
   httpInfo: true
+  httpParameters: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
   handlers: 
     →: |
-      'function onTransactionStarted() {
-          // Get values from sequence variables
-      }'
+      '// Handles the transaction start event.
+      function onTransactionStarted() {
+          var variables = context.transaction.variables;
+          function getText(name) {
+              var value = variables.get(name);
+              return value == null ? "" : String(value);
+          }
+          function putText(name, value) {
+              if (value != null && String(value).length > 0) {
+                  variables.put(name, String(value));
+              }
+          }
+          var verb = getText("forms_Verb").toUpperCase();
+          if (verb.length == 0) {
+              verb = "GET";
+          }
+          var HttpMethodType = Packages.com.twinsoft.convertigo.engine.enums.HttpMethodType;
+          if (verb == "PATCH") {
+              context.transaction.setHttpVerb(HttpMethodType.PUT);
+              context.transaction.customHttpVerb = "PATCH";
+          } else {
+              context.transaction.setHttpVerb(HttpMethodType.valueOf(verb));
+              context.transaction.customHttpVerb = "";
+          }
+          var contentType = "";
+          var XMLVector = Packages.com.twinsoft.convertigo.beans.common.XMLVector;
+          var httpParameters = new XMLVector();
+          var headersText = getText("forms_Headers");
+          if (headersText.length > 0) {
+              var headers = JSON.parse(headersText);
+              if (!Array.isArray(headers)) {
+                  throw "forms_Headers must be a JSON array";
+              }
+              for (var i = 0; i < headers.length; i++) {
+                  var header = headers[i] || {};
+                  var name = header.name || header.key;
+                  var value = header.value;
+                  if (name != null && String(name).length > 0 && value != null) {
+                      var normalizedName = String(name).replace(/[^A-Za-z0-9_-]/g, "-");
+                      var httpParameter = new XMLVector();
+                      httpParameter.add(normalizedName);
+                      httpParameter.add(String(value));
+                      httpParameters.add(httpParameter);
+                      if (String(name).toLowerCase() == "content-type") {
+                          contentType = String(value);
+                      }
+                  }
+              }
+          }
+          context.transaction.setCurrentHttpParameters(httpParameters);
+          var body = getText("__body");
+          if (body.length > 0 && body != "{}") {
+              if (contentType.length == 0) {
+                  contentType = "application/json";
+              }
+              putText("__contentType", contentType);
+          } else if (verb == "GET" || verb == "DELETE") {
+              variables.remove("__body");
+          }
+          variables.remove("forms_Verb");
+          variables.remove("forms_Headers");
+          context.connector.prepareForTransaction(context);
+      }
+      '
   ↓__body [variables.RequestableHttpVariable-1779858456964]: 
     comment: |
       '{
@@ -24,7 +89,8 @@
         "es": "Contenido del cuerpo de la solicitud desde la variable de secuencia forms_Body.",
         "ch": "来自序列变量forms_Body的请求正文内容。"
       }'
-  ↓__headers [variables.RequestableHttpVariable-1779858840104]: 
+    httpMethod: POST
+  ↓forms_Headers [variables.RequestableHttpVariable-1779858840104]: 
     comment: |
       '{
         "en": "HTTP headers from sequence variable forms_Headers.",
@@ -33,3 +99,7 @@
         "es": "Encabezados HTTP desde la variable de secuencia forms_Headers.",
         "ch": "来自序列变量forms_Headers的HTTP标头。"
       }'
+  ↓forms_Verb [variables.RequestableHttpVariable-1779865634487]: 
+    comment: HTTP verb supplied by forms_Verb.
+  ↓__contentType [variables.RequestableHttpVariable-1779865634543]: 
+    comment: Resolved request body content type.
