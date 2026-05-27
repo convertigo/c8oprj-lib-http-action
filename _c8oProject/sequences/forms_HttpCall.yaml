@@ -1,0 +1,301 @@
+comment: |
+  '{
+    "en": "Triggers HTTP API calls with dynamic verb, body, headers and URL. This sequence allows you to make HTTP requests to any API endpoint with configurable parameters passed as requestable variables.",
+    "fr": "Déclenche des appels d''API HTTP avec verbe, corps, en-têtes et URL dynamiques. Cette séquence vous permet d''effectuer des requêtes HTTP vers n''importe quel point de terminaison API avec des paramètres configurables passés en variables demandables.",
+    "it": "Attiva chiamate API HTTP con verbo, body, header e URL dinamici. Questa sequenza consente di effettuare richieste HTTP a qualsiasi endpoint API con parametri configurabili passati come variabili richiedibili.",
+    "es": "Activa llamadas a API HTTP con verbo, cuerpo, encabezados y URL dinámicos. Esta secuencia permite realizar solicitudes HTTP a cualquier endpoint de API con parámetros configurables pasados como variables solicitables.",
+    "ch": "使用动态动词、正文、标头和URL触发HTTP API调用。此序列允许您向任何API端点发送HTTP请求，配置参数通过请求变量传递。"
+  }'
+↓inputVars [steps.InputVariablesStep-1779859940519]: 
+↓Call_Transaction [steps.TransactionStep-1779858476460]: 
+  connectionStringDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1779859940519
+        - java.lang.String: 
+          - ↑value: ./forms_Url/text()
+  sourceTransaction: lib_HttpAction.HTTP_connector.HttpCall
+  ↓__body [variables.StepVariable-1779858476462]: 
+↓forms_Verb [variables.RequestableVariable-1779857624782]: 
+  comment: |
+    '{
+      "en": "HTTP verb to use (GET, POST, PUT, DELETE, PATCH, etc.). This determines the type of HTTP request to make.",
+      "fr": "Verbe HTTP à utiliser (GET, POST, PUT, DELETE, PATCH, etc.). Cela détermine le type de requête HTTP à effectuer.",
+      "it": "Verbo HTTP da utilizzare (GET, POST, PUT, DELETE, PATCH, ecc.). Questo determina il tipo di richiesta HTTP da effettuare.",
+      "es": "Verbo HTTP a usar (GET, POST, PUT, DELETE, PATCH, etc.). Esto determina el tipo de solicitud HTTP a realizar.",
+      "ch": "要使用的HTTP动词（GET、POST、PUT、DELETE、PATCH等）。这决定了要制作的HTTP请求类型。"
+    }'
+↓forms_Body [variables.RequestableVariable-1779857624785]: 
+  comment: |
+    '{
+      "en": "JSON body to send with the request (for POST, PUT, PATCH verbs). This should be a valid JSON string that will be sent as the request payload.",
+      "fr": "Corps JSON à envoyer avec la requête (pour les verbes POST, PUT, PATCH). Cela doit être une chaîne JSON valide qui sera envoyée comme charge utile de la requête.",
+      "it": "Corpo JSON da inviare con la richiesta (per i verbi POST, PUT, PATCH). Deve essere una stringa JSON valida che verrà inviate come payload della richiesta.",
+      "es": "Cuerpo JSON para enviar con la solicitud (para los verbos POST, PUT, PATCH). Esto debe ser una cadena JSON válida que se enviará como carga útil de la solicitud.",
+      "ch": "要随请求发送的JSON正文（用于POST、PUT、PATCH动词）。这应该是一个有效的JSON字符串，将作为请求负载发送。"
+    }'
+↓forms_Headers [variables.RequestableVariable-1779857624787]: 
+  comment: |
+    '{
+      "en": "JSON array of object headers to include in the request. Format: [{name: Header-Name, value: Header-Value}]. Each object in the array represents a single HTTP header with ''name'' and ''value'' properties.",
+      "fr": "Tableau JSON d''objets d''en-têtes à inclure dans la requête. Format : [{name: Nom-EnTete, value: Valeur-EnTete}]. Chaque objet du tableau représente un en-tête HTTP unique avec les propriétés ''name'' et ''value''.",
+      "it": "Array JSON di oggetti header da includere nella richiesta. Formato: [{name: Nome-Header, value: Valore-Header}]. Ogni oggetto nell''array rappresenta un singolo header HTTP con le proprietà ''name'' e ''value''.",
+      "es": "Matriz JSON de objetos de encabezados para incluir en la solicitud. Formato: [{name: Nombre-Encabezado, value: Valor-Encabezado}]. Cada objeto en la matriz representa un encabezado HTTP único con las propiedades ''name'' y ''value''.",
+      "ch": "要包含在请求中的JSON头对象数组。格式：[{"name": "头名称", "value": "头值"}]。数组中的每个对象代表一个带有''name''和''value''属性的HTTP头。"
+    }'
+↓forms_Url [variables.RequestableVariable-1779858754284]: 
+  comment: |
+    '{
+      "en": "URL to call (including optional query string). This is the target endpoint for the HTTP request.",
+      "fr": "URL à appeler (incluant la chaîne de requête éventuelle). Il s''agit du point de terminaison cible pour la requête HTTP.",
+      "it": "URL da chiamare (inclusa l''eventuale stringa di query). Questo è l''endpoint di destinazione per la richiesta HTTP.",
+      "es": "URL a llamar (incluyendo la cadena de consulta opcional). Este es el endpoint de destino para la solicitud HTTP.",
+      "ch": "要调用的URL（包括可选的查询字符串）。这是HTTP请求的目标端点。"
+    }'
+↓Test_HTTPBin_DELETE [core.TestCase]: 
+  comment: |
+    '{
+      "en": "Test case for DELETE request. Calls HTTPBin DELETE endpoint to verify delete operations work correctly.",
+      "fr": "Cas de test pour la requête DELETE. Appelle le point de terminaison DELETE de HTTPBin pour vérifier que les opérations de suppression fonctionnent correctement.",
+      "it": "Caso di test per la richiesta DELETE. Chiama l''endpoint DELETE di HTTPBin per verificare che le operazioni di eliminazione funzionino correttamente.",
+      "es": "Caso de prueba para solicitud DELETE. Llama al endpoint DELETE de HTTPBin para verificar que las operaciones de eliminación funcionen correctamente.",
+      "ch": "DELETE请求的测试用例。调用HTTPBin的DELETE端点以验证删除操作是否正常工作。"
+    }'
+  ↓forms_Url [variables.TestCaseVariable-1779860193579]: 
+    comment: |
+      '{
+        "en": "HTTPBin DELETE endpoint URL with resource ID for testing.",
+        "fr": "URL du point de terminaison DELETE de HTTPBin avec ID de ressource pour les tests.",
+        "it": "URL dell''endpoint DELETE di HTTPBin con ID risorsa per i test.",
+        "es": "URL del endpoint DELETE de HTTPBin con ID de recurso para pruebas.",
+        "ch": "HTTPBin DELETE端点URL，带有资源ID，用于测试。"
+      }'
+    value: https://httpbin.org/delete/42
+  ↓forms_Verb [variables.TestCaseVariable-1779860197463]: 
+    comment: |
+      '{
+        "en": "DELETE method for the test.",
+        "fr": "Méthode DELETE pour le test.",
+        "it": "Metodo DELETE per il test.",
+        "es": "Método DELETE para la prueba.",
+        "ch": "测试的DELETE方法。"
+      }'
+    value: DELETE
+  ↓forms_Body [variables.TestCaseVariable-1779860202562]: 
+    comment: |
+      '{
+        "en": "Empty body for DELETE request.",
+        "fr": "Corps vide pour la requête DELETE.",
+        "it": "Body vuoto per la richiesta DELETE.",
+        "es": "Cuerpo vacío para la solicitud DELETE.",
+        "ch": "DELETE请求的空正文。"
+      }'
+    value: '{}'
+  ↓forms_Headers [variables.TestCaseVariable-1779860206572]: 
+    comment: |
+      '{
+        "en": "Test headers for HTTPBin DELETE request.",
+        "fr": "En-têtes de test pour la requête DELETE HTTPBin.",
+        "it": "Header di test per la richiesta DELETE HTTPBin.",
+        "es": "Encabezados de prueba para la solicitud DELETE HTTPBin.",
+        "ch": "HTTPBin DELETE请求的测试标头。"
+      }'
+    value: '[{"name":"Accept","value":"application/json"},{"name":"X-Test-Case","value":"Test_HTTPBin_DELETE"},{"name":"X-Resource-Id","value":"42"}]'
+↓Test_HTTPBin_GET [core.TestCase]: 
+  comment: |
+    '{
+      "en": "Test case for forms_HttpCall sequence. Calls HTTPBin GET endpoint to verify the sequence works correctly.",
+      "fr": "Cas de test pour la séquence forms_HttpCall. Appelle le point de terminaison GET de HTTPBin pour vérifier que la séquence fonctionne correctement.",
+      "it": "Caso di test per la sequenza forms_HttpCall. Chiama l''endpoint GET di HTTPBin per verificare che la sequenza funzioni correttamente.",
+      "es": "Caso de prueba para la secuencia forms_HttpCall. Llama al endpoint GET de HTTPBin para verificar que la secuencia funciona correctamente.",
+      "ch": "forms_HttpCall序列的测试用例。调用HTTPBin的GET端点以验证序列是否正常工作。"
+    }'
+  ↓forms_Url [variables.TestCaseVariable-1779859236428]: 
+    comment: |
+      '{
+        "en": "HTTPBin GET endpoint URL for testing.",
+        "fr": "URL du point de terminaison GET de HTTPBin pour les tests.",
+        "it": "URL dell''endpoint GET di HTTPBin per i test.",
+        "es": "URL del endpoint GET de HTTPBin para pruebas.",
+        "ch": "HTTPBin GET端点URL，用于测试。"
+      }'
+    value: https://httpbin.org/get
+  ↓forms_Verb [variables.TestCaseVariable-1779859261383]: 
+    comment: |
+      '{
+        "en": "HTTP method for the test.",
+        "fr": "Méthode HTTP pour le test.",
+        "it": "Metodo HTTP per il test.",
+        "es": "Método HTTP para la prueba.",
+        "ch": "测试的HTTP方法。"
+      }'
+    value: GET
+  ↓forms_Body [variables.TestCaseVariable-1779859268499]: 
+    comment: |
+      '{
+        "en": "Empty body for GET request.",
+        "fr": "Corps vide pour la requête GET.",
+        "it": "Body vuoto per la richiesta GET.",
+        "es": "Cuerpo vacío para la solicitud GET.",
+        "ch": "GET请求的空正文。"
+      }'
+    value: '{}'
+  ↓forms_Headers [variables.TestCaseVariable-1779859276348]: 
+    comment: |
+      '{
+        "en": "Test headers for HTTPBin request.",
+        "fr": "En-têtes de test pour la requête HTTPBin.",
+        "it": "Header di test per la richiesta HTTPBin.",
+        "es": "Encabezados de prueba para la solicitud HTTPBin.",
+        "ch": "HTTPBin请求的测试标头。"
+      }'
+    value: '[{"name":"Accept","value":"application/json"},{"name":"X-Test-Case","value":"Test_HTTPBin_GET"}]'
+↓Test_HTTPBin_GET_QueryParams [core.TestCase]: 
+  comment: |
+    '{
+      "en": "Test case for GET request with query parameters. Calls HTTPBin GET endpoint with query string to verify URL parameters are handled correctly.",
+      "fr": "Cas de test pour la requête GET avec paramètres de requête. Appelle le point de terminaison GET de HTTPBin avec chaîne de requête pour vérifier que les paramètres URL sont gérés correctement.",
+      "it": "Caso di test per la richiesta GET con parametri di query. Chiama l''endpoint GET di HTTPBin con stringa di query per verificare che i parametri URL siano gestiti correttamente.",
+      "es": "Caso de prueba para solicitud GET con parámetros de consulta. Llama al endpoint GET de HTTPBin con cadena de consulta para verificar que los parámetros de URL se manejen correctamente.",
+      "ch": "包含查询参数的GET请求测试用例。调用HTTPBin的GET端点，带有查询字符串，以验证URL参数是否正确处理。"
+    }'
+  ↓forms_Url [variables.TestCaseVariable-1779860216266]: 
+    comment: |
+      '{
+        "en": "HTTPBin GET endpoint URL with query parameters for testing.",
+        "fr": "URL du point de terminaison GET de HTTPBin avec paramètres de requête pour les tests.",
+        "it": "URL dell''endpoint GET di HTTPBin con parametri di query per i test.",
+        "es": "URL del endpoint GET de HTTPBin con parámetros de consulta para pruebas.",
+        "ch": "HTTPBin GET端点URL，带有查询参数，用于测试。"
+      }'
+    value: https://httpbin.org/get?param1=value1&param2=value2
+  ↓forms_Verb [variables.TestCaseVariable-1779860220576]: 
+    comment: |
+      '{
+        "en": "GET method for the test.",
+        "fr": "Méthode GET pour le test.",
+        "it": "Metodo GET per il test.",
+        "es": "Método GET para la prueba.",
+        "ch": "测试的GET方法。"
+      }'
+    value: GET
+  ↓forms_Body [variables.TestCaseVariable-1779860223875]: 
+    comment: |
+      '{
+        "en": "Empty body for GET request with query parameters.",
+        "fr": "Corps vide pour la requête GET avec paramètres de requête.",
+        "it": "Body vuoto per la richiesta GET con parametri di query.",
+        "es": "Cuerpo vacío para la solicitud GET con parámetros de consulta.",
+        "ch": "带有查询参数的GET请求的空正文。"
+      }'
+    value: '{}'
+  ↓forms_Headers [variables.TestCaseVariable-1779860228556]: 
+    comment: |
+      '{
+        "en": "Test headers for HTTPBin GET request with query parameters.",
+        "fr": "En-têtes de test pour la requête GET HTTPBin avec paramètres de requête.",
+        "it": "Header di test per la richiesta GET HTTPBin con parametri di query.",
+        "es": "Encabezados de prueba para la solicitud GET HTTPBin con parámetros de consulta.",
+        "ch": "HTTPBin GET请求的测试标头（带查询参数）。"
+      }'
+    value: '[{"name":"Accept","value":"application/json"},{"name":"X-Test-Case","value":"Test_HTTPBin_GET_QueryParams"},{"name":"X-Query-Test","value":"param1=value1&param2=value2"}]'
+↓Test_HTTPBin_POST [core.TestCase]: 
+  comment: |
+    '{
+      "en": "Test case for POST request with JSON body. Calls HTTPBin POST endpoint to verify JSON body is sent correctly.",
+      "fr": "Cas de test pour la requête POST avec corps JSON. Appelle le point de terminaison POST de HTTPBin pour vérifier que le corps JSON est envoyé correctement.",
+      "it": "Caso di test per la richiesta POST con body JSON. Chiama l''endpoint POST di HTTPBin per verificare che il body JSON venga inviato correttamente.",
+      "es": "Caso de prueba para solicitud POST con cuerpo JSON. Llama al endpoint POST de HTTPBin para verificar que el cuerpo JSON se envía correctamente.",
+      "ch": "POST请求的测试用例，包含JSON正文。调用HTTPBin的POST端点以验证JSON正文是否正确发送。"
+    }'
+  ↓forms_Url [variables.TestCaseVariable-1779860122394]: 
+    comment: |
+      '{
+        "en": "HTTPBin POST endpoint URL for testing.",
+        "fr": "URL du point de terminaison POST de HTTPBin pour les tests.",
+        "it": "URL dell''endpoint POST di HTTPBin per i test.",
+        "es": "URL del endpoint POST de HTTPBin para pruebas.",
+        "ch": "HTTPBin POST端点URL，用于测试。"
+      }'
+    value: https://httpbin.org/post
+  ↓forms_Verb [variables.TestCaseVariable-1779860126232]: 
+    comment: |
+      '{
+        "en": "POST method for the test.",
+        "fr": "Méthode POST pour le test.",
+        "it": "Metodo POST per il test.",
+        "es": "Método POST para la prueba.",
+        "ch": "测试的POST方法。"
+      }'
+    value: POST
+  ↓forms_Body [variables.TestCaseVariable-1779860130170]: 
+    comment: |
+      '{
+        "en": "JSON body for POST request.",
+        "fr": "Corps JSON pour la requête POST.",
+        "it": "Body JSON per la richiesta POST.",
+        "es": "Cuerpo JSON para la solicitud POST.",
+        "ch": "POST请求的JSON正文。"
+      }'
+    value: '{"name":"Convertigo HTTP action test","message":"POST body sent by Test_HTTPBin_POST","active":true}'
+  ↓forms_Headers [variables.TestCaseVariable-1779860135907]: 
+    comment: |
+      '{
+        "en": "Test headers for HTTPBin POST request.",
+        "fr": "En-têtes de test pour la requête POST HTTPBin.",
+        "it": "Header di test per la richiesta POST HTTPBin.",
+        "es": "Encabezados de prueba para la solicitud POST HTTPBin.",
+        "ch": "HTTPBin POST请求的测试标头。"
+      }'
+    value: '[{"name":"Content-Type","value":"application/json"},{"name":"Accept","value":"application/json"},{"name":"X-Test-Case","value":"Test_HTTPBin_POST"}]'
+↓Test_HTTPBin_PUT [core.TestCase]: 
+  comment: |
+    '{
+      "en": "Test case for PUT request with JSON body. Calls HTTPBin PUT endpoint to verify update operations work correctly.",
+      "fr": "Cas de test pour la requête PUT avec corps JSON. Appelle le point de terminaison PUT de HTTPBin pour vérifier que les opérations de mise à jour fonctionnent correctement.",
+      "it": "Caso di test per la richiesta PUT con body JSON. Chiama l''endpoint PUT di HTTPBin per verificare che le operazioni di aggiornamento funzionino correttamente.",
+      "es": "Caso de prueba para solicitud PUT con cuerpo JSON. Llama al endpoint PUT de HTTPBin para verificar que las operaciones de actualización funcionen correctamente.",
+      "ch": "PUT请求的测试用例，包含JSON正文。调用HTTPBin的PUT端点以验证更新操作是否正常工作。"
+    }'
+  ↓forms_Url [variables.TestCaseVariable-1779860144537]: 
+    comment: |
+      '{
+        "en": "HTTPBin PUT endpoint URL for testing.",
+        "fr": "URL du point de terminaison PUT de HTTPBin pour les tests.",
+        "it": "URL dell''endpoint PUT di HTTPBin per i test.",
+        "es": "URL del endpoint PUT de HTTPBin para pruebas.",
+        "ch": "HTTPBin PUT端点URL，用于测试。"
+      }'
+    value: https://httpbin.org/put
+  ↓forms_Verb [variables.TestCaseVariable-1779860148506]: 
+    comment: |
+      '{
+        "en": "PUT method for the test.",
+        "fr": "Méthode PUT pour le test.",
+        "it": "Metodo PUT per il test.",
+        "es": "Método PUT para la prueba.",
+        "ch": "测试的PUT方法。"
+      }'
+    value: PUT
+  ↓forms_Body [variables.TestCaseVariable-1779860153003]: 
+    comment: |
+      '{
+        "en": "JSON body for PUT request to update a resource.",
+        "fr": "Corps JSON pour la requête PUT afin de mettre à jour une ressource.",
+        "it": "Body JSON per la richiesta PUT per aggiornare una risorsa.",
+        "es": "Cuerpo JSON para la solicitud PUT para actualizar un recurso.",
+        "ch": "PUT请求的JSON正文，用于更新资源。"
+      }'
+    value: '{"id":42,"name":"Updated Convertigo HTTP action test","message":"PUT body sent by Test_HTTPBin_PUT","active":true}'
+  ↓forms_Headers [variables.TestCaseVariable-1779860184522]: 
+    comment: |
+      '{
+        "en": "Test headers for HTTPBin PUT request.",
+        "fr": "En-têtes de test pour la requête PUT HTTPBin.",
+        "it": "Header di test per la richiesta PUT HTTPBin.",
+        "es": "Encabezados de prueba para la solicitud PUT HTTPBin.",
+        "ch": "HTTPBin PUT请求的测试标头。"
+      }'
+    value: '[{"name":"Content-Type","value":"application/json"},{"name":"Accept","value":"application/json"},{"name":"X-Test-Case","value":"Test_HTTPBin_PUT"}]'

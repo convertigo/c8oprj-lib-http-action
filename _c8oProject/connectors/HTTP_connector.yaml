@@ -1,0 +1,35 @@
+↑default: true
+↓HttpCall [transactions.JsonHttpTransaction-1779858377178]: 
+  ↑default: true
+  comment: |
+    '{
+      "en": "Generic HTTP call transaction for JSON APIs. Uses dynamic URL, verb, body and headers from sequence variables.",
+      "fr": "Transaction d''appel HTTP générique pour les API JSON. Utilise l''URL, le verbe, le corps et les en-têtes dynamiques depuis les variables de la séquence.",
+      "it": "Transazione di chiamata HTTP generica per API JSON. Utilizza URL, verbo, body e header dinamici dalle variabili della sequenza.",
+      "es": "Transacción de llamada HTTP genérica para APIs JSON. Utiliza URL, verbo, body y encabezados dinámicos desde las variables de la secuencia.",
+      "ch": "通用JSON API的HTTP调用事务。使用来自序列变量的动态URL、动词、正文和标头。"
+    }'
+  httpInfo: true
+  handlers: 
+    →: |
+      'function onTransactionStarted() {
+          // Get values from sequence variables
+      }'
+  ↓__body [variables.RequestableHttpVariable-1779858456964]: 
+    comment: |
+      '{
+        "en": "Request body content from sequence variable forms_Body.",
+        "fr": "Contenu du corps de la requête depuis la variable de séquence forms_Body.",
+        "it": "Contenuto del body della richiesta dalla variabile di sequenza forms_Body.",
+        "es": "Contenido del cuerpo de la solicitud desde la variable de secuencia forms_Body.",
+        "ch": "来自序列变量forms_Body的请求正文内容。"
+      }'
+  ↓__headers [variables.RequestableHttpVariable-1779858840104]: 
+    comment: |
+      '{
+        "en": "HTTP headers from sequence variable forms_Headers.",
+        "fr": "En-têtes HTTP depuis la variable de séquence forms_Headers.",
+        "it": "Header HTTP dalla variabile di sequenza forms_Headers.",
+        "es": "Encabezados HTTP desde la variable de secuencia forms_Headers.",
+        "ch": "来自序列变量forms_Headers的HTTP标头。"
+      }'
