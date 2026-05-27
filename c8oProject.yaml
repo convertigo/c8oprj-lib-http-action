@@ -11,5 +11,6 @@
   contextTimeout: 59
   corsOrigin: =Origin
   httpSessionTimeout: 60
+  version: 1.0
   ↓HTTP_connector [connectors.HttpConnector-1779858370132]: 🗏 connectors/HTTP_connector.yaml
   ↓forms_HttpCall [sequences.GenericSequence]: 🗏 sequences/forms_HttpCall.yaml
