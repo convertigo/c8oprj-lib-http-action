@@ -2,11 +2,26 @@
 ↓lib_HttpAction [core.Project]: 
   comment: |
     '{
-      "en": "HTTP action plugin for Convertigo No Code Studio to trigger HTTP API calls. This library provides sequences to make HTTP calls with dynamic configuration through requestable variables. It enables No Code Studio users to trigger HTTP API calls without writing code.",
-      "fr": "Plugin d''action HTTP pour Convertigo No Code Studio pour déclencher des appels d''API HTTP. Cette bibliothèque fournit des séquences pour effectuer des appels HTTP avec une configuration dynamique via des variables demandables.",
-      "it": "Plugin di azione HTTP per Convertigo No Code Studio per attivare chiamate API HTTP. Questa libreria fornisce sequenze per effettuare chiamate HTTP con configurazione dinamica tramite variabili richiedibili.",
-      "es": "Complemento de acción HTTP para Convertigo No Code Studio para activar llamadas a API HTTP. Esta biblioteca proporciona secuencias para realizar llamadas HTTP con configuración dinámica a través de variables solicitables.",
-      "ch": "适用于Convertigo No Code Studio的HTTP动作插件，用于触发HTTP API调用。该库提供序列以通过请求变量进行动态配置来制作HTTP调用。它使No Code Studio用户能够在无需编写代码的情况下触发HTTP API调用。"
+        "en": {
+            "displayName": "HTTP API action",
+            "comment": "HTTP action plugin for Convertigo No Code Studio to trigger HTTP API calls. This library provides actions to make HTTP calls with dynamic configuration through requestable variables. It enables No Code Studio users to trigger HTTP API calls without writing code."
+        },
+        "fr": {
+            "displayName": "Action API HTTP",
+            "comment": "Plugin d''action HTTP pour Convertigo No Code Studio pour déclencher des appels d''API HTTP. Cette bibliothèque fournit des actions pour effectuer des appels HTTP avec une configuration dynamique via des variables demandables."
+        },
+        "it": {
+            "displayName": "Azione API HTTP",
+            "comment": "Plugin di azione HTTP per Convertigo No Code Studio per attivare chiamate API HTTP. Questa libreria fornisce azioni per effettuare chiamate HTTP con configurazione dinamica tramite variabili richiedibili."
+        },
+        "es": {
+            "displayName": "Acción API HTTP",
+            "comment": "Complemento de acción HTTP para Convertigo No Code Studio para activar llamadas a API HTTP. Esta biblioteca proporciona acciones para realizar solicitudes HTTP con configuración dinámica a través de variables solicitables."
+        },
+        "ch": {
+            "displayName": "HTTP API 动作",
+            "comment": "适用于Convertigo No Code Studio的HTTP动作插件，用于触发HTTP API调用。该库提供动作以通过请求变量进行动态配置来制作HTTP调用。它使No Code Studio用户能够在无需编写代码的情况下触发HTTP API调用。"
+        }
     }'
   contextTimeout: 59
   corsOrigin: =Origin

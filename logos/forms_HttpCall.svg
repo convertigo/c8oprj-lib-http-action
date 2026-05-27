@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+    <path d="M176 160l-80 96l80 96" fill="none" stroke="#ED1C24" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+    <path d="M336 160l80 96l-80 96" fill="none" stroke="#ED1C24" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+    <path d="M288 96l-64 320" fill="none" stroke="#ED1C24" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+</svg>

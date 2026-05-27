@@ -1,10 +1,25 @@
 comment: |
   '{
-    "en": "Triggers HTTP API calls with dynamic verb, body, headers and URL. This sequence allows you to make HTTP requests to any API endpoint with configurable parameters passed as requestable variables.",
-    "fr": "Déclenche des appels d''API HTTP avec verbe, corps, en-têtes et URL dynamiques. Cette séquence vous permet d''effectuer des requêtes HTTP vers n''importe quel point de terminaison API avec des paramètres configurables passés en variables demandables.",
-    "it": "Attiva chiamate API HTTP con verbo, body, header e URL dinamici. Questa sequenza consente di effettuare richieste HTTP a qualsiasi endpoint API con parametri configurabili passati come variabili richiedibili.",
-    "es": "Activa llamadas a API HTTP con verbo, cuerpo, encabezados y URL dinámicos. Esta secuencia permite realizar solicitudes HTTP a cualquier endpoint de API con parámetros configurables pasados como variables solicitables.",
-    "ch": "使用动态动词、正文、标头和URL触发HTTP API调用。此序列允许您向任何API端点发送HTTP请求，配置参数通过请求变量传递。"
+      "en": {
+          "displayName": "<p>Call an HTTP API</p>",
+          "comment": "<div>Triggers an <b>HTTP API call</b> with a dynamic URL, verb, headers and JSON body.</div>"
+      },
+      "fr": {
+          "displayName": "<p>Appeler une API HTTP</p>",
+          "comment": "<div>Déclenche un <b>appel d''API HTTP</b> avec une URL, un verbe, des en-têtes et un corps JSON dynamiques.</div>"
+      },
+      "es": {
+          "displayName": "<p>Llamar a una API HTTP</p>",
+          "comment": "<div>Activa una <b>llamada a API HTTP</b> con URL, verbo, encabezados y cuerpo JSON dinámicos.</div>"
+      },
+      "it": {
+          "displayName": "<p>Chiamare un''API HTTP</p>",
+          "comment": "<div>Attiva una <b>chiamata API HTTP</b> con URL, verbo, header e corpo JSON dinamici.</div>"
+      },
+      "ch": {
+          "displayName": "<p>调用 HTTP API</p>",
+          "comment": "<div>使用动态 URL、动词、标头和 JSON 正文触发 <b>HTTP API 调用</b>。</div>"
+      }
   }'
 ↓inputVars [steps.InputVariablesStep-1779859940519]: 
 ↓Call_Transaction [steps.TransactionStep-1779858476460]: 
